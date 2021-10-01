@@ -1,13 +1,37 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0px;
+  padding: 0px;
+  background-color: deepskyblue;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.main-container {
+  background-color: white;
+  margin-top: 150px;
+  margin-left: 200px;
+  width: 70%;
+  height: 400px;
+}
+
+.progress_title {
+  text-align: center;
+  font-size: 50px;
+}
+.progress-container {
+  border: 1px solid black;
+  height: 200px;
+  padding: 40px 0px 5px 40px;
+  margin: 40px;
+}
+
+.sliderGroup {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  
+  flex-direction: row;
+}
+
+.sliderGroup .s {
+  width: 700px;
 }
