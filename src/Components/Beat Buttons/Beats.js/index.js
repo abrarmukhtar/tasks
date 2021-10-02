@@ -1,7 +1,8 @@
 import React from "react";
-
+import Footer from "../Footer";
 export default function Beats({ arr, playSound }) {
   return (
+    <>
     <div className="beat">
       <button
         className="button"
@@ -15,6 +16,8 @@ export default function Beats({ arr, playSound }) {
       >
         {String.fromCharCode(arr.btn)}
       </button>
+
     </div>
+    </>
   );
 }

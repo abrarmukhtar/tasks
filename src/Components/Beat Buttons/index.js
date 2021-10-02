@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Beats from "./Beats.js";
-
+import Footer from "./Footer";
 export default function BeatButtons() {
   const [currClicked, setCurrClicked] = useState("");
 
@@ -35,7 +35,7 @@ export default function BeatButtons() {
   ];
   const [beatsList, setBeatsList] = useState(beats);
 
-  //play sound when click or key press 
+  //play sound when click or key press
   const playSound = (beat) => {
     var kes = document.getElementById(beat.btn);
 
@@ -59,7 +59,6 @@ export default function BeatButtons() {
       }
     });
   };
-
 
   useEffect(() => {
     window.addEventListener("keydown", keyp);
@@ -86,20 +85,22 @@ export default function BeatButtons() {
     };
   }, [endOfTransitioned]);
 
-
   return (
-    <div>
-      <h1 className="Beat_Title"> Beat The Button</h1>
+    <>
+      <div>
+        <h1 className="Beat_Title"> Beat The Button</h1>
 
-      <div className="main_Beat_Container">
-        <div className="beatBox">
-          {beatsList.map((arr, index) => {
-            return (
-              <Beats key={index} arr={arr} playSound={(e) => playSound(e)} />
-            );
-          })}
+        <div className="main_Beat_Container">
+          <div className="beatBox">
+            {beatsList.map((arr, index) => {
+              return (
+                <Beats key={index} arr={arr} playSound={(e) => playSound(e)} />
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
