@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import ReactDom from "react-dom";
+
 export default function BeatButtons() {
+  const [currClicked, setCurrClicked] = useState("");
   const Links = [
     "https://firebasestorage.googleapis.com/v0/b/new-project-b8582.appspot.com/o/smart_alarm.mp3?alt=media&token=c6ed8ce0-4863-4b0f-8539-e186c2de5079",
     "https://firebasestorage.googleapis.com/v0/b/new-project-b8582.appspot.com/o/smart_watch.mp3?alt=media&token=6d44e53e-ee16-4bc7-9fbd-e41461e226b2",
@@ -14,62 +15,83 @@ export default function BeatButtons() {
   ];
 
   let beats = [
-    { btn: "65", beat: new Audio(Links[0]) },
-    { btn: "66", beat: new Audio(Links[1]) },
-    { btn: "67", beat: new Audio(Links[2]) },
-    { btn: "68", beat: new Audio(Links[3]) },
-    { btn: "69", beat: new Audio(Links[4]) },
-    { btn: "70", beat: new Audio(Links[5]) },
-    { btn: "71", beat: new Audio(Links[6]) },
-    { btn: "72", beat: new Audio(Links[7]) },
-    { btn: "73", beat: new Audio(Links[8]) },
+    { btn: "65", beat: new Audio(Links[0]), btnColor: "#00fffe" },
+    { btn: "66", beat: new Audio(Links[1]), btnColor: "#00fffe" },
+    { btn: "67", beat: new Audio(Links[2]), btnColor: "#00fffe" },
+    { btn: "68", beat: new Audio(Links[3]), btnColor: "#FF00FF" },
+    { btn: "69", beat: new Audio(Links[4]), btnColor: "#FF00FF" },
+    { btn: "70", beat: new Audio(Links[5]), btnColor: "#FF00FF" },
+    { btn: "71", beat: new Audio(Links[6]), btnColor: "#FF00FF" },
+    { btn: "72", beat: new Audio(Links[7]), btnColor: "#FFFFFF" },
+    { btn: "73", beat: new Audio(Links[8]), btnColor: "#FFFFFF" },
   ];
 
   const playSound = (beat) => {
-    beat.currentTime = 0;
-    beat.play();
+    
+    var kes = document.getElementById(beat.btn);
+
+
+    kes.style.backgroundColor = beat.btnColor;
+
+    kes.style.boxShadow = `0px 0px 17px 0px ${beat.btnColor}`;
+
+    setCurrClicked(beat.btn);
+
+    beat.beat.currentTime = 0;
+
+    beat.beat.play();
   };
 
   var keyp = (e) => {
-    // console.log(e.keyCode)
-
-    // if(e.keyCode in beats.btn){
-    //     console.log(e.keyCode)
-    // }
-    // console.log(e.keyCode);
     let ky = e.keyCode;
     beats.map((arr, index) => {
       if (e.keyCode == arr.btn) {
-        playSound(arr.beat);
+        playSound(arr);
       }
     });
-
-    //    var keyBeat =  beats.filter((arr, index)=>  arr.btn == ky)
-
-    //  keyBeat && )
   };
+  document.addEventListener("keydown", keyp);
 
   const [beatsList, setBeatsList] = useState(beats);
 
-  document.addEventListener("keydown", keyp);
+  const endOfTransitioned = (e) => {
+    if (currClicked) {
+      var kes = document.getElementById(currClicked);
+
+      kes.style.backgroundColor = "transparent";
+
+      kes.style.boxShadow = "none";
+    }
+  };
+
+  document.addEventListener("transitionend", endOfTransitioned);
   return (
     <div>
       <h1 className="Beat_Title"> Beat The Button</h1>
       <audio id="bflat"> </audio>
       <div className="main_Beat_Container">
         <div className="beatBox">
-
-        {beatsList.map((arr, index) => {
-          return (
-            <div className="beat">
-            <button className="button" style={{borderColor: "rgb(0, 255, 254)", backgroundColor: "transparent", boxShadow: "none"}} key={index} onClick={() => playSound(arr.beat)}>
-              {String.fromCharCode(arr.btn)}
-            </button>
-            </div>
-          );
-        })}
+          {beatsList.map((arr, index) => {
+            return (
+              <div className="beat" key={index}>
+                <button
+                  className="button"
+                  style={{
+                    borderColor: arr.btnColor,
+                    backgroundColor: "transparent",
+                    boxShadow: "none",
+                  }}
+                  onClick={() => playSound(arr)}
+                  id={arr.btn}
+                >
+                  {String.fromCharCode(arr.btn)}
+                </button>
+              </div>
+            );
+          })}
         </div>
       </div>
+
     </div>
   );
 }
