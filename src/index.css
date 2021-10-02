@@ -1,9 +1,68 @@
 body {
-  margin: 0px;
-  padding: 0px;
-  background-color: deepskyblue;
+  margin: 0;
+  background-image: url("https://beat-the-button.web.app/assets/background.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Finger Paint", cursive;
 }
 
+.Beat_Title {
+  color: white;
+  text-align: center;
+  font-size: 2.2em;
+}
+
+.main_Beat_Container {
+
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.beatBox {
+  width: 600px;
+  min-height: 600px;
+  background: #333;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-evenly;
+}
+
+.beat {
+  width: 150px;
+  height: 150px;
+  flex-basis: 29%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.beat .button {
+  width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    border: 5px solid aqua;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    font-size: 2em;
+    transition: all 0.2s;
+}
+
+
+
+
+/* below code for silder */
 .main-container {
   background-color: white;
   margin-top: 150px;
@@ -28,7 +87,7 @@ body {
   display: flex;
   justify-content: left;
   align-items: center;
-  
+
   flex-direction: row;
 }
 

@@ -29,7 +29,7 @@ export default function BeatButtons() {
     beat.currentTime = 0;
     beat.play();
   };
-  
+
   var keyp = (e) => {
     // console.log(e.keyCode)
 
@@ -39,36 +39,36 @@ export default function BeatButtons() {
     // console.log(e.keyCode);
     let ky = e.keyCode;
     beats.map((arr, index) => {
-       
-        if(e.keyCode == arr.btn){
-            playSound(arr.beat)
-        }
+      if (e.keyCode == arr.btn) {
+        playSound(arr.beat);
+      }
     });
 
-//    var keyBeat =  beats.filter((arr, index)=>  arr.btn == ky)
-    
-   
+    //    var keyBeat =  beats.filter((arr, index)=>  arr.btn == ky)
+
     //  keyBeat && )
   };
 
-  
-  
-  
   const [beatsList, setBeatsList] = useState(beats);
-  
-    document.addEventListener("keydown", keyp);
-    return (
-        <div style={{ margin: "200px" }}>
-      <h1> Beat The Button</h1>
+
+  document.addEventListener("keydown", keyp);
+  return (
+    <div>
+      <h1 className="Beat_Title"> Beat The Button</h1>
       <audio id="bflat"> </audio>
-      <div>
+      <div className="main_Beat_Container">
+        <div className="beatBox">
+
         {beatsList.map((arr, index) => {
-            return (
-                <button key={index} onClick={() => playSound(arr.beat)}>
+          return (
+            <div className="beat">
+            <button className="button" style={{borderColor: "rgb(0, 255, 254)", backgroundColor: "transparent", boxShadow: "none"}} key={index} onClick={() => playSound(arr.beat)}>
               {String.fromCharCode(arr.btn)}
             </button>
+            </div>
           );
         })}
+        </div>
       </div>
     </div>
   );
