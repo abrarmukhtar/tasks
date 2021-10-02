@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Beats from "./Beats.js";
 import Footer from "./Footer";
+import {Link, useHistory} from 'react-router-dom'
 export default function BeatButtons() {
+  const history = useHistory();
   const [currClicked, setCurrClicked] = useState("");
 
   const Links = [
@@ -88,6 +90,7 @@ export default function BeatButtons() {
   return (
     <>
       <div>
+      <h4 style={{textAlign: "center", cursor: "pointer"}} onClick={()=> history.push('/slider')} as={Link}> Click to move "Slide Range " </h4>
         <h1 className="Beat_Title"> Beat The Button</h1>
 
         <div className="main_Beat_Container">

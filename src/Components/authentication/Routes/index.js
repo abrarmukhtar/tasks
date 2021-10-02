@@ -9,9 +9,9 @@ export default function Routes() {
   return (
     <>
       <Switch>
-      
+      <Route exact path="/" component={Beats} />
+        {/* <Route exact path="/slider" component={Slider} /> */}
         <Route exact path="/slider" component={Slider} />
-        <Route exact path="/beat" component={Beats} />
       </Switch>
     </>
   );

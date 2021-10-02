@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-
+import {Link, useHistory} from 'react-router-dom'
 import ProgressBars from "../Slider Progress Bar/ProgressBar";
 
 export default function SliderProgressBar() {
+  
+  const history = useHistory();
   const [state1, setstate1] = useState(100);
   const [state2, setstate2] = useState(0);
   const [state3, setstate3] = useState(0);
@@ -31,8 +33,8 @@ export default function SliderProgressBar() {
         changeFn3={setstate3}
         Nums={setSumOf}
       />
-
-      <h4 style={{textAlign: "center"}}> {"Total %" + sumOf}</h4>
+      <h4 style={{textAlign: "center", margin: "0px"}}> {"Total %" + sumOf}</h4>
+      <h4 style={{textAlign: "center", cursor: "pointer"}} onClick={()=> history.push('/')} as={Link}> Click to move "Beats Button" </h4>
     </div>
   );
 }
