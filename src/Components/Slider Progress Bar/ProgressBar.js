@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import RangeSlider from "react-bootstrap-range-slider";
 
 export default function ProgressBar(props) {
-  const [sumOf, setSumOf] = useState(0);
+
+
 
   const comperisons = (e) => {
     let Sum =
@@ -11,25 +12,21 @@ export default function ProgressBar(props) {
 
     let xtraNum = 0;
     let xtraNum2 = 0;
-
+    
     if (Sum > 100) {
       xtraNum = Math.ceil(Math.round((Sum - 100) / 2)); // this return partial value
-
-      if (Sum % 2 == 1) {
-        // this checks that given value is Odd or Even
-        xtraNum2 = xtraNum - 1;
-      } else {
-        xtraNum2 = xtraNum;
-      }
     } else {
       xtraNum = Math.ceil(Math.round((100 - Sum) / 2)); // this return partial value
-      if (Sum % 2 == 1) {
-        // this checks that given value is Odd or Even
-        xtraNum2 = xtraNum - 1;
-      } else {
-        xtraNum2 = xtraNum;
-      }
+      
     }
+
+    if (Sum % 2 == 1) {
+      // this checks that given value is Odd or Even
+      xtraNum2 = xtraNum - 1;
+    } else {
+      xtraNum2 = xtraNum;
+    }
+
 
     let p1 = 0;
     let p2 = 0;
@@ -107,7 +104,6 @@ export default function ProgressBar(props) {
         }
         props.changeFn1(p1);
         props.changeFn2(p2);
-
         break;
       default:
         console.log("nothing matched");

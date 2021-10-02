@@ -11,11 +11,6 @@ export default function SliderProgressBar() {
 
   const [sumOf, setSumOf] = useState(0);
 
-  // useEffect(()=>{
-
-  //   setSumOf()
-
-  // }, state1, state2, state3)
 
   useEffect(() => {
     setSumOf(parseInt(state1) + parseInt(state2) + parseInt(state3));
