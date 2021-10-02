@@ -9,7 +9,6 @@ body {
   align-items: center;
   min-height: 100vh;
   font-family: "Finger Paint", cursive;
-  
 }
 
 .Beat_Title {
@@ -19,7 +18,6 @@ body {
 }
 
 .main_Beat_Container {
-
   max-width: 100%;
   display: flex;
   justify-content: center;
@@ -35,6 +33,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-content: space-evenly;
+  border: 1px solid green;
 }
 
 .beat {
@@ -44,22 +43,20 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
- 
 }
 .beat .button {
   width: 120px;
-    height: 120px;
-    border-radius: 10px;
-    border: 5px solid aqua;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: sans-serif;
-    font-size: 2em;
-    transition: all 0.2s;
+  height: 120px;
+  border-radius: 10px;
+  border: 5px solid aqua;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  font-size: 2em;
+  transition: all 0.2s;
 }
-
 
 footer p {
   color: white;
@@ -73,29 +70,30 @@ footer a {
   color: white;
 }
 
-
 /* below code for silder */
 .main-container {
   background-color: white;
-  margin-top: 150px;
-  margin-left: 200px;
-  width: 70%;
-  height: 400px;
+  margin-top: 50px;
+  margin-left: 40px;
+  width: 700px;
+  height: 300px;
+  border-radius: 10px;
+  /* min-height: 100vh;  */
 }
 
 .progress_title {
   text-align: center;
-  font-size: 50px;
+  font-size: 30px;
+  padding-top: 50px;
 }
+
 .progress-container {
-  border: 1px solid black;
-  height: 200px;
-  padding: 40px 0px 5px 40px;
-  margin: 40px;
+  padding-left: 20px;
+  margin-left: 40px;
 }
 
 .sliderGroup {
-  width: 100%;
+  height: 35px;
   display: flex;
   justify-content: left;
   align-items: center;
@@ -104,5 +102,5 @@ footer a {
 }
 
 .sliderGroup .s {
-  width: 700px;
+  width: 550px;
 }

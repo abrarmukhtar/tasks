@@ -5,10 +5,10 @@ import Footer from './Components/Beat Buttons/Footer';
 
 function App() {
   return (
-    // <Slider />
     <>
-    <BeatButtons />
-    <Footer />
+    <Slider />
+    {/* <BeatButtons /> */}
+    {/* <Footer /> */}
     </>
   );
 }

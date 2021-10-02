@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Beats from "./Beats.js";
 
 export default function BeatButtons() {
   const [currClicked, setCurrClicked] = useState("");
+
   const Links = [
     "https://firebasestorage.googleapis.com/v0/b/new-project-b8582.appspot.com/o/smart_alarm.mp3?alt=media&token=c6ed8ce0-4863-4b0f-8539-e186c2de5079",
     "https://firebasestorage.googleapis.com/v0/b/new-project-b8582.appspot.com/o/smart_watch.mp3?alt=media&token=6d44e53e-ee16-4bc7-9fbd-e41461e226b2",
@@ -14,22 +16,28 @@ export default function BeatButtons() {
     "https://firebasestorage.googleapis.com/v0/b/new-project-b8582.appspot.com/o/tunes%20for%20Beats%2Fmouse_click.mp3?alt=media&token=f311ae3e-1f16-4312-8d0a-763c0a24638e",
   ];
 
-  let beats = [
-    { btn: "65", beat: new Audio(Links[0]), btnColor: "#00fffe" },
-    { btn: "66", beat: new Audio(Links[1]), btnColor: "#00fffe" },
-    { btn: "67", beat: new Audio(Links[2]), btnColor: "#00fffe" },
-    { btn: "68", beat: new Audio(Links[3]), btnColor: "#FF00FF" },
-    { btn: "69", beat: new Audio(Links[4]), btnColor: "#FF00FF" },
-    { btn: "70", beat: new Audio(Links[5]), btnColor: "#FF00FF" },
-    { btn: "71", beat: new Audio(Links[6]), btnColor: "#FF00FF" },
-    { btn: "72", beat: new Audio(Links[7]), btnColor: "#FFFFFF" },
-    { btn: "73", beat: new Audio(Links[8]), btnColor: "#FFFFFF" },
+  const colors = {
+    p1: "#00fffe",
+    p2: "#FF00FF",
+    p3: "#FFFFFF",
+  };
+
+  const beats = [
+    { btn: "65", beat: new Audio(Links[0]), btnColor: colors.p1 },
+    { btn: "66", beat: new Audio(Links[1]), btnColor: colors.p1 },
+    { btn: "67", beat: new Audio(Links[2]), btnColor: colors.p1 },
+    { btn: "68", beat: new Audio(Links[3]), btnColor: colors.p2 },
+    { btn: "69", beat: new Audio(Links[4]), btnColor: colors.p2 },
+    { btn: "70", beat: new Audio(Links[5]), btnColor: colors.p2 },
+    { btn: "71", beat: new Audio(Links[6]), btnColor: colors.p2 },
+    { btn: "72", beat: new Audio(Links[7]), btnColor: colors.p3 },
+    { btn: "73", beat: new Audio(Links[8]), btnColor: colors.p3 },
   ];
+  const [beatsList, setBeatsList] = useState(beats);
 
+  //play sound when click or key press 
   const playSound = (beat) => {
-    
     var kes = document.getElementById(beat.btn);
-
 
     kes.style.backgroundColor = beat.btnColor;
 
@@ -42,18 +50,26 @@ export default function BeatButtons() {
     beat.beat.play();
   };
 
-  var keyp = (e) => {
-    let ky = e.keyCode;
-    beats.map((arr, index) => {
+  //when user press key
+  const keyp = (e) => {
+    const ky = e.keyCode;
+    beatsList.map((arr) => {
       if (e.keyCode == arr.btn) {
         playSound(arr);
       }
     });
   };
-  document.addEventListener("keydown", keyp);
 
-  const [beatsList, setBeatsList] = useState(beats);
 
+  useEffect(() => {
+    window.addEventListener("keydown", keyp);
+
+    return () => {
+      window.removeEventListener("keydown", keyp);
+    };
+  }, [keyp]);
+
+  //when transition end this code run
   const endOfTransitioned = (e) => {
     if (currClicked) {
       var kes = document.getElementById(currClicked);
@@ -63,35 +79,27 @@ export default function BeatButtons() {
       kes.style.boxShadow = "none";
     }
   };
+  useEffect(() => {
+    document.addEventListener("transitionend", endOfTransitioned);
+    return () => {
+      document.removeEventListener("transitionend", endOfTransitioned);
+    };
+  }, [endOfTransitioned]);
 
-  document.addEventListener("transitionend", endOfTransitioned);
+
   return (
     <div>
       <h1 className="Beat_Title"> Beat The Button</h1>
-      <audio id="bflat"> </audio>
+
       <div className="main_Beat_Container">
         <div className="beatBox">
           {beatsList.map((arr, index) => {
             return (
-              <div className="beat" key={index}>
-                <button
-                  className="button"
-                  style={{
-                    borderColor: arr.btnColor,
-                    backgroundColor: "transparent",
-                    boxShadow: "none",
-                  }}
-                  onClick={() => playSound(arr)}
-                  id={arr.btn}
-                >
-                  {String.fromCharCode(arr.btn)}
-                </button>
-              </div>
+              <Beats key={index} arr={arr} playSound={(e) => playSound(e)} />
             );
           })}
         </div>
       </div>
-
     </div>
   );
 }

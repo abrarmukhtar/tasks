@@ -32,7 +32,7 @@ export default function SliderProgressBar() {
         Nums={setSumOf}
       />
 
-      <p className="progress_title"> {"Total %" + sumOf}</p>
+      <h4 style={{textAlign: "center"}}> {"Total %" + sumOf}</h4>
     </div>
   );
 }
