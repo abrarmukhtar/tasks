@@ -1,4 +1,26 @@
-body {
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.logo img {
+  
+  width: 50px;
+  height: 30px;
+  margin-bottom: 2px;
+}
+
+.logo input {
+  margin: 20px;
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+
+
+
+/* bellow code for Beats and Range Tasks */
+/* body {
   margin: 0;
   background-image: url("https://beat-the-button.web.app/assets/background.jpeg");
   background-repeat: no-repeat;
@@ -81,8 +103,10 @@ footer p {
 footer a {
   color: white;
 }
+*/
 
 /* below code for silder */
+/*
 .main-container {
   background-color: white;
   margin-top: 50px;
@@ -90,9 +114,9 @@ footer a {
   width: 700px;
   height: 300px;
   border-radius: 10px;
-  /* min-height: 100vh;  */
-}
-
+   min-height: 100vh;  
+}*/
+/* 
 .progress_title {
   text-align: center;
   font-size: 30px;
@@ -116,3 +140,4 @@ footer a {
 .sliderGroup .s {
   width: 550px;
 }
+ */
